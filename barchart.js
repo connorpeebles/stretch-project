@@ -69,6 +69,29 @@ function drawBarChart(data, options, element) {
 
     chartArea.appendChild(bar);
   }
+
+  if ("Xlabels" in options === true) {
+    var labels = options.Xlabels;
+    drawXlabels(labels, chartWidth, barWidth, space, "div3");
+  }
+
 }
 
-drawBarChart([1,2,4,8,16], {height:500, width:500, spacing:10, colour:"#800080", text:"#C0C0C0", align:"center"}, "div1");
+function drawXlabels(labels, chartWidth, barWidth, space, element) {
+  var labelArea = document.getElementById(element);
+  labelArea.style.width = chartWidth + "px";
+
+  for (var i = 0; i < labels.length; i++) {
+    var label = document.createElement("div");
+    label.setAttribute("class", "div4");
+
+    label.style.height = barWidth + "px";
+    label.style.marginLeft = (space + i * (barWidth + space)) + "px";
+    label.innerHTML = labels[i];
+    label.style.lineHeight = barWidth + "px";
+
+    labelArea.appendChild(label);
+  }
+}
+
+drawBarChart([1,2,4,8,16], {height:500, width:600, spacing:10, colour:"#800080", text:"#C0C0C0", align:"center", Xlabels:["lol","look","at","my","text"]}, "div1");

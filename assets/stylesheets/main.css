@@ -8,7 +8,6 @@
   background: #FFFFFF;
 }
 
-
 .div2{
   position: absolute;
   width: 0px;
@@ -19,4 +18,25 @@
   text-align: center;
   color: #FFFFFF;
   line-height: 0px;
+}
+
+#div3{
+  width: 500px;
+  height: 200px;
+  margin-top: 0px;
+  margin-left: 50px;
+  background: #FFFFFF;
+}
+
+.div4{
+  position: absolute;
+  width: 200px;
+  height: 0px;
+  margin-top: 210px;
+  margin-left: 0px;
+  background: #FFFFFF;
+  text-align: right;
+  line-height: 0px;
+  transform: rotate(270deg);
+  transform-origin: left top 0;
 }
