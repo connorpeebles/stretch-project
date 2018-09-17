@@ -1,7 +1,11 @@
 function drawBarChart(data, options, element) {
   var chartArea = document.getElementById(element);
 
-  var numBars = data.length;
+  var values = data.values;
+  var labels = data.labels;
+  var scale = data.scale;
+
+  var numBars = values.length;
   var chartWidth = 500;
   var chartHeight = 300;
   var space = 5;
@@ -9,10 +13,10 @@ function drawBarChart(data, options, element) {
   var textColour = "#FFFFFF";
   var textAlign = "top";
 
-  var maxValue = data[0][0];
-  for (i = 1; i < data.length; i++) {
-    if (data[i][0] > maxValue) {
-      maxValue = data[i][0];
+  var maxValue = values[0];
+  for (i = 1; i < values.length; i++) {
+    if (values[i] > maxValue) {
+      maxValue = values[i];
     }
   }
 
@@ -45,18 +49,18 @@ function drawBarChart(data, options, element) {
   var barWidth = (chartWidth / numBars) - space;
   var barHeight;
 
-  for (var i = 0; i < data.length; i++) {
+  for (var i = 0; i < values.length; i++) {
     var bar = document.createElement("div");
     bar.setAttribute("class", "div2");
 
-    barHeight = data[i][0] / maxValue * chartHeight;
+    barHeight = values[i] / maxValue * chartHeight;
 
     bar.style.width = barWidth + "px";
     bar.style.height = barHeight + "px";
     bar.style.marginLeft = (space + i * (barWidth + space)) + "px";
     bar.style.top = (chartHeight - barHeight + 50) + "px";
     bar.style.background = colour;
-    bar.innerHTML = data[i][0];
+    bar.innerHTML = values[i];
     bar.style.color = textColour;
 
     if (textAlign === "center") {
@@ -70,34 +74,31 @@ function drawBarChart(data, options, element) {
     chartArea.appendChild(bar);
   }
 
-  drawXlabels(data, chartWidth, barWidth, space, "div3");
+  drawXlabels(labels, chartWidth, barWidth, space, "div3");
 
   drawYlabels(data, chartHeight, "div5");
 }
 
-function drawXlabels(data, chartWidth, barWidth, space, element) {
+function drawXlabels(labels, chartWidth, barWidth, space, element) {
   var labelArea = document.getElementById(element);
   labelArea.style.width = chartWidth + "px";
 
-  for (var i = 0; i < data.length; i++) {
+  for (var i = 0; i < labels.length; i++) {
     var label = document.createElement("div");
     label.setAttribute("class", "div4");
 
     label.style.height = barWidth + "px";
     label.style.marginLeft = (space + i * (barWidth + space)) + "px";
-    label.innerHTML = data[i][1];
+    label.innerHTML = labels[i];
     label.style.lineHeight = barWidth + "px";
 
     labelArea.appendChild(label);
   }
 }
 
-
 function drawYlabels(data, chartHeight, element) {
   var labelArea = document.getElementById(element);
   labelArea.style.height = chartHeight + "px";
 }
 
-
-
-drawBarChart([[1,"lol"],[2,"look"],[4,"at"],[8,"my"],[16,"text"],[32,"!!!"]], {height:500, width:600, spacing:10, colour:"#800080", text:"#C0C0C0", align:"center"}, "div1");
+drawBarChart({values: [1,2,4,8,16], labels: ["lol","look","at","my","text"], scale: 5}, {height:500, width:600, spacing:10, colour:"#800080", text:"#C0C0C0", align:"center"}, "div1");
