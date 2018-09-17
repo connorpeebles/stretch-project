@@ -60,7 +60,7 @@ function drawBarChart(data, options, element) {
     bar.style.width = barWidth + "px";
     bar.style.height = barHeight + "px";
     bar.style.marginLeft = (space + i * (barWidth + space)) + "px";
-    bar.style.top = (chartHeight - barHeight + 50) + "px";
+    bar.style.top = (chartHeight - barHeight + 100) + "px";
     bar.style.background = colour;
     bar.innerHTML = values[i];
     bar.style.color = textColour;
@@ -79,6 +79,8 @@ function drawBarChart(data, options, element) {
   drawXlabels(labels, chartWidth, barWidth, space, "div3");
 
   drawYlabels(scale, maxY, chartHeight, "div5");
+
+  drawTitles("div7", "XTitle", "YTitle", chartHeight, chartWidth);
 }
 
 function drawXlabels(labels, chartWidth, barWidth, space, element) {
@@ -115,4 +117,10 @@ function drawYlabels(scale, maxY, chartHeight, element) {
   }
 }
 
-drawBarChart({values: [1,2,4,8,16], labels: ["lol","look","at","my","text"], scale: 5}, {height:500, width:600, spacing:10, colour:"#800080", text:"#C0C0C0", align:"center"}, "div1");
+function drawTitles(chartElement, XElement, YElement, chartHeight, chartWidth) {
+  var chartTitle = document.getElementById(chartElement);
+  chartTitle.style.width = chartWidth + "px";
+  chartTitle.innerHTML = "Bar Chart";
+}
+
+drawBarChart({values: [1,2,4,8,16], labels: ["lol","look","at","my","text"], scale: 2}, {height:400, width:600, spacing:10, colour:"#800080", text:"#C0C0C0", align:"top"}, "div1");
