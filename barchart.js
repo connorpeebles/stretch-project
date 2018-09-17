@@ -5,6 +5,9 @@ function drawBarChart(data, options, element) {
   var chartWidth = 500;
   var chartHeight = 300;
   var space = 5;
+  var colour = "#008000";
+  var textColour = "#FFFFFF";
+  var textAlign = "top";
 
   var maxValue = data[0];
   for (i = 1; i < data.length; i++) {
@@ -27,6 +30,18 @@ function drawBarChart(data, options, element) {
     space = options.spacing;
   }
 
+  if ("colour" in options === true) {
+    colour = options.colour;
+  }
+
+  if ("text" in options === true) {
+    textColour = options.text;
+  }
+
+  if ("align" in options === true) {
+    textAlign = options.align;
+  }
+
   var barWidth = (chartWidth / numBars) - space;
   var barHeight;
 
@@ -40,8 +55,20 @@ function drawBarChart(data, options, element) {
     bar.style.height = barHeight + "px";
     bar.style.marginLeft = (space + i * (barWidth + space)) + "px";
     bar.style.top = (chartHeight - barHeight + 50) + "px";
+    bar.style.background = colour;
+    bar.innerHTML = data[i];
+    bar.style.color = textColour;
+
+    if (textAlign === "center") {
+      bar.style.lineHeight = barHeight + "px";
+    } else if (textAlign === "bottom") {
+      bar.style.lineHeight = (2 * barHeight - 20) + "px";
+    } else {
+      bar.style.lineHeight = 20 + "px";
+    }
+
     chartArea.appendChild(bar);
   }
 }
 
-drawBarChart([1,2,4,8,16], {height:200, width:700, spacing:40}, "div1");
+drawBarChart([1,2,4,8,16], {height:500, width:500, spacing:10, colour:"#800080", text:"#C0C0C0", align:"center"}, "div1");
