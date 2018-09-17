@@ -20,6 +20,8 @@ function drawBarChart(data, options, element) {
     }
   }
 
+  var maxY = maxValue + (scale - maxValue % scale);
+
   if ("width" in options === true) {
     chartArea.style.width = options.width + "px";
     chartWidth = options.width;
@@ -53,7 +55,7 @@ function drawBarChart(data, options, element) {
     var bar = document.createElement("div");
     bar.setAttribute("class", "div2");
 
-    barHeight = values[i] / maxValue * chartHeight;
+    barHeight = values[i] / maxY * chartHeight;
 
     bar.style.width = barWidth + "px";
     bar.style.height = barHeight + "px";
@@ -76,7 +78,7 @@ function drawBarChart(data, options, element) {
 
   drawXlabels(labels, chartWidth, barWidth, space, "div3");
 
-  drawYlabels(data, chartHeight, "div5");
+  drawYlabels(scale, maxY, chartHeight, "div5");
 }
 
 function drawXlabels(labels, chartWidth, barWidth, space, element) {
@@ -96,9 +98,21 @@ function drawXlabels(labels, chartWidth, barWidth, space, element) {
   }
 }
 
-function drawYlabels(data, chartHeight, element) {
+function drawYlabels(scale, maxY, chartHeight, element) {
   var labelArea = document.getElementById(element);
-  labelArea.style.height = chartHeight + "px";
+  labelArea.style.height = (chartHeight + 13) + "px";
+
+  for (var i = 0; i <= maxY / scale; i++) {
+    var label = document.createElement("div");
+    label.setAttribute("class", "div6");
+
+    var labelHeight = ((i * scale) / maxY) * chartHeight;
+
+    label.innerHTML = (i * scale) + " -";
+    label.style.marginBottom = labelHeight + "px";
+
+    labelArea.appendChild(label);
+  }
 }
 
 drawBarChart({values: [1,2,4,8,16], labels: ["lol","look","at","my","text"], scale: 5}, {height:500, width:600, spacing:10, colour:"#800080", text:"#C0C0C0", align:"center"}, "div1");

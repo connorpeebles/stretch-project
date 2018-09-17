@@ -48,5 +48,17 @@
   height: 300px;
   margin-top: 50px;
   margin-left: 50px;
-  background: #00FF00;
+  background: #FFFFFF;
+}
+
+.div6{
+  bottom: 0;
+  position: absolute;
+  width: 100px;
+  height: 20px;
+  margin-top: 0px;
+  margin-left: 0px;
+  background: #FFFFFF;
+  text-align: right;
+  margin-bottom: 0px;
 }
