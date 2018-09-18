@@ -2,7 +2,7 @@
   width: 500px;
   height: 300px;
   margin-top: 100px;
-  margin-left: 150px;
+  margin-left: 100px;
   border-left: 1px solid #555555;
   border-bottom: 1px solid #555555;
   background: #FFFFFF;
@@ -24,7 +24,7 @@
   width: 500px;
   height: 200px;
   margin-top: 0px;
-  margin-left: 150px;
+  margin-left: 100px;
   background: #FFFFFF;
 }
 
@@ -47,7 +47,7 @@
   width: 100px;
   height: 300px;
   margin-top: 100px;
-  margin-left: 50px;
+  margin-left: 0px;
   background: #FFFFFF;
 }
 
@@ -67,13 +67,13 @@
   top: 0;
   position: absolute;
   width: 0px;
-  height: 100px;
-  margin-top: 0px;
-  margin-left: 150px;
+  height: 75px;
+  margin-top: 25px;
+  margin-left: 100px;
   background: #FFFFFF;
   text-align: center;
   color: #000000;
   font-size: 14pt;
   font-weight: bold;
-  line-height: 100px;
+  word-wrap: break-word;
 }

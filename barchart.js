@@ -80,7 +80,7 @@ function drawBarChart(data, options, element) {
 
   drawYlabels(scale, maxY, chartHeight, "div5");
 
-  drawTitles("div7", "XTitle", "YTitle", chartHeight, chartWidth);
+  drawTitle("Test Title I Wonder if this will Wrap lol idk let's make it bigger", 36, "#00FFFF", chartWidth, "div7");
 }
 
 function drawXlabels(labels, chartWidth, barWidth, space, element) {
@@ -117,10 +117,13 @@ function drawYlabels(scale, maxY, chartHeight, element) {
   }
 }
 
-function drawTitles(chartElement, XElement, YElement, chartHeight, chartWidth) {
-  var chartTitle = document.getElementById(chartElement);
-  chartTitle.style.width = chartWidth + "px";
-  chartTitle.innerHTML = "Bar Chart";
+function drawTitle(text, size, colour, chartWidth, element) {
+  var title = document.getElementById(element);
+
+  title.innerHTML = text;
+  title.style.fontSize = size + "pt";
+  title.style.color = colour;
+  title.style.width = chartWidth + "px";
 }
 
 drawBarChart({values: [1,2,4,8,16], labels: ["lol","look","at","my","text"], scale: 2}, {height:400, width:600, spacing:10, colour:"#800080", text:"#C0C0C0", align:"top"}, "div1");
