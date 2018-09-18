@@ -210,4 +210,4 @@ function drawTitle(text, size, colour, chartWidth, element) {
   title.style.width = chartWidth + "px";
 }
 
-drawBarChart({values: [1,2,3,4,5,6,7,8,9,10], labels: ["lol","look","at","my","text"], scale: 2}, {height:400, width:600, spacing:10, colour:"#800080", labelColour:"#C0C0C0", labelAlign:"top", title: "Lol Look at My Bar Chart", titleColour:"#00FF00", titleSize:16}, "div1");
+drawBarChart({values: [9,6,6,5,6,3,0], labels: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], scale: 2}, {height:400, width:600, spacing:10, colour:"#008080", labelColour:"#00FFFF", labelAlign:"top", title: "Hours Spent Coding, Week of Sept 2 - 8, 2018", titleColour:"#000000", titleSize:16}, "div1");
