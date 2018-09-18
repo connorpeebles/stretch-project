@@ -1,3 +1,4 @@
+/* chart area */
 #div1{
   width: 500px;
   height: 300px;
@@ -8,6 +9,7 @@
   background: #FFFFFF;
 }
 
+/* bars */
 .div2{
   position: absolute;
   width: 0px;
@@ -20,6 +22,7 @@
   line-height: 0px;
 }
 
+/* X-axis label area */
 #div3{
   width: 500px;
   height: 200px;
@@ -28,6 +31,7 @@
   background: #FFFFFF;
 }
 
+/* X-axis labels */
 .div4{
   position: absolute;
   width: 200px;
@@ -41,6 +45,7 @@
   transform-origin: left top 0;
 }
 
+/* Y-axis label area */
 #div5{
   top: 0;
   position: absolute;
@@ -51,6 +56,7 @@
   background: #FFFFFF;
 }
 
+/* Y-axis labels */
 .div6{
   bottom: 0;
   position: absolute;
@@ -63,6 +69,7 @@
   margin-bottom: 0px;
 }
 
+/* title area */
 #div7{
   top: 0;
   position: absolute;
