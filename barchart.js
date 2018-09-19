@@ -61,16 +61,8 @@ function drawBarChart(data, options, element) {
     titleSize = options.titleSize;
   }
 
-  // runs through 'values' to determine the maximum value
-  var maxValue = values[0];
-  for (i = 1; i < values.length; i++) {
-    if (values[i] > maxValue) {
-      maxValue = values[i];
-    }
-  }
-
   // determines the largest value to be displayed on the Y-axis based on the maxValue and scale
-  var maxY = maxValue + (scale - maxValue % scale);
+  var maxY = findMaxY(values, scale);
 
   // determines the width of each bar and inititalizes the variable for barHeight
   var barWidth = (chartWidth / numBars) - space;
@@ -78,6 +70,9 @@ function drawBarChart(data, options, element) {
   // calls singleBarChart or stackedBarChart, depending on the data given
   if (typeof(values[0]) == typeof(1)) {
     singleBarChart(values, chartWidth, chartHeight, barWidth, maxY, space, colour, labelColour, labelALign, element);
+  } else if (typeof(values[0]) == typeof([])) {
+    var legend = data.legend;
+    stackedBarChart(values, legend, chartWidth, chartHeight, barWidth, maxY, space, labelColour, labelALign, element);
   }
 
   // calls drawXlabels to draw the labels on the X-axis
@@ -88,6 +83,31 @@ function drawBarChart(data, options, element) {
 
   // calls drawTitle to draw the chart title
   drawTitle(title, titleSize, titleColour, chartWidth, "div7");
+}
+
+function findMaxY(values, scale) {
+  var maxValue = 0;
+
+  if (typeof(values[0]) == typeof(1)) {
+    for (var i = 0; i < values.length; i++) {
+      if (values[i] > maxValue) {
+        maxValue = values[i];
+      }
+    }
+  } else if (typeof(values[0]) == typeof([])) {
+    for (var i = 0; i < values.length; i++) {
+      var sum = 0;
+      for (var j = 0; j < values[i].length; j++) {
+        sum += values[i][j];
+      }
+      if (sum > maxValue) {
+        maxValue = sum;
+      }
+    }
+  }
+
+  var maxY = maxValue + (scale - maxValue % scale);
+  return maxY;
 }
 
 function singleBarChart(values, chartWidth, chartHeight, barWidth, maxY, space, colour, labelColour, labelALign, element) {
@@ -134,7 +154,34 @@ function singleBarChart(values, chartWidth, chartHeight, barWidth, maxY, space, 
   }
 }
 
-//function stackedBarChart(values, chartWidth, chartHeight, barWidth, maxY, space, colour, labelColour, labelALign, element)
+function stackedBarChart(values, legend, chartWidth, chartHeight, barWidth, maxY, space, labelColour, labelALign, element) {
+  var chartArea = document.getElementById(element);
+
+  chartArea.style.width = chartWidth + "px";
+  chartArea.style.height = chartHeight + "px";
+
+  var barHeight;
+
+  for (var i = 0; i < values.length; i++) {
+    var stackHeight = 0;
+
+    for (var j = 0; j < values[i].length; j++) {
+      var bar = document.createElement("div");
+      bar.setAttribute("class", "div2");
+
+      barHeight = values[i][j] / maxY * chartHeight;
+
+      bar.style.width = barWidth + "px";
+      bar.style.height = barHeight + "px";
+      bar.style.marginLeft = (space + i * (barWidth + space)) + "px";
+      bar.style.top = (chartHeight - barHeight - stackHeight + 100) + "px";
+      stackHeight += barHeight;
+
+      chartArea.appendChild(bar);
+    }
+  }
+
+}
 
 /**
 drawXlabels is a helper function called by drawBarChart to create the labels on the X-axis.
@@ -220,4 +267,4 @@ function drawTitle(text, size, colour, chartWidth, element) {
   title.style.width = chartWidth + "px";
 }
 
-drawBarChart({values: [9,6,6,5,6,3,0], labels: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], scale: 2, title: "Hours Spent Coding, Week of Sept 2 - 8, 2018"}, {height:400, width:600, spacing:10, colour:"#008080", labelColour:"#00FFFF", labelAlign:"top", titleColour:"#000000", titleSize:16}, "div1");
+drawBarChart({values: [[9,6],[6,5],[6,3]], labels: ["Label1","Label2","Label3"], legend: [["Legend1","#008000"],["Legend2","#0000FF"]], scale: 2, title: "Stacked Bar Chart"}, {height:400, width:600, spacing:10, labelColour:"#C0C0C0", labelAlign:"middle", titleColour:"#000000", titleSize:16}, "div1");
