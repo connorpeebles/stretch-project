@@ -20,7 +20,7 @@
   text-align: center;
   color: #FFFFFF;
   line-height: 0px;
-  animation-duration: 3s;
+  animation-duration: 8s;
   animation-name: test;
 }
 
@@ -89,9 +89,9 @@
 
 @keyframes test{
   0%{
-    height: 0;
+    max-height: 0%;
   }
   100%{
-    height: height;
+    max-height: 100%;
   }
 }

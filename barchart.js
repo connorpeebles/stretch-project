@@ -175,6 +175,21 @@ function stackedBarChart(values, legend, chartWidth, chartHeight, barWidth, maxY
       bar.style.height = barHeight + "px";
       bar.style.marginLeft = (space + i * (barWidth + space)) + "px";
       bar.style.top = (chartHeight - barHeight - stackHeight + 100) + "px";
+      bar.style.background = legend[j][1];
+
+      bar.innerHTML = values[i][j];
+      bar.style.color = labelColour;
+
+      if (values[i][j] === 0) {
+        bar.innerHTML = "";
+      } else if (labelALign === "center") {
+        bar.style.lineHeight = barHeight + "px";
+      } else if (labelALign === "bottom") {
+        bar.style.lineHeight = (2 * barHeight - 20) + "px";
+      } else {
+        bar.style.lineHeight = 20 + "px";
+      }
+
       stackHeight += barHeight;
 
       chartArea.appendChild(bar);
@@ -267,4 +282,4 @@ function drawTitle(text, size, colour, chartWidth, element) {
   title.style.width = chartWidth + "px";
 }
 
-drawBarChart({values: [[9,6],[6,5],[6,3]], labels: ["Label1","Label2","Label3"], legend: [["Legend1","#008000"],["Legend2","#0000FF"]], scale: 2, title: "Stacked Bar Chart"}, {height:400, width:600, spacing:10, labelColour:"#C0C0C0", labelAlign:"middle", titleColour:"#000000", titleSize:16}, "div1");
+drawBarChart({values: [[1,2,3,4],[2,4,6,8],[0,5,10,15],[4,3,2,1]], labels: ["Label1","Label2","Label3","Label4"], legend: [["Legend1","#008080"],["Legend2","#00FFFF"],["Legend3","#0000FF"],["Legend4","#000080"]], scale: 3, title: "Stacked Bar Chart"}, {height:500, width:500, spacing:20, labelColour:"#C0C0C0", labelAlign:"center", titleColour:"#000000", titleSize:16}, "div1");
