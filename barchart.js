@@ -1,41 +1,39 @@
 /**
 drawBarChart is the main function called by the user to create the bar chart.
 The function takes in three parameters:
-  - data: object with three mandatory properties:
-    - values: array of numbers representing the values of the bars
-    - labels: array of strings representing the labels associated with each value to be displayed on the X-axis (must be same length as values)
-    - scale:  number representing the scale at which the values on the Y-axis increase by
-  - options: object with up to nine optional properties: height, width, spacing, colour, labelColour, labelAlign, title, titleColour, titleSize (see README file for details)
-  - element: string representing the element that the chart is rendered into
+  - data:     object with four mandatory properties:
+    - values:   array of numbers representing the values of the bars
+    - labels:   array of strings representing the labels associated with each value to be displayed on the X-axis (must be same length as values)
+    - scale:    number representing the scale at which the values on the Y-axis increase by
+    - title:    string representing tbe title of the chart to be displayed
+  - options:  object with up to eight optional properties: height, width, spacing, colour, labelColour, labelAlign, titleColour, titleSize (see README file for details)
+  - element:  string representing the element that the chart is rendered into
 **/
 function drawBarChart(data, options, element) {
-  var chartArea = document.getElementById(element);
 
   // extracts the parameters from 'data'
   var values = data.values;
   var labels = data.labels;
   var scale = data.scale;
+  var title = data.title;
   var numBars = values.length;
 
-  // inititalizes the nine optional parameters from 'options' with default values
+  // inititalizes the eight optional parameters from 'options' with default values
   var chartWidth = 500;
   var chartHeight = 300;
   var space = 5;
   var colour = "#008000";
-  var textColour = "#FFFFFF";
-  var textAlign = "top";
-  var title = "Bar Chart";
+  var labelColour = "#FFFFFF";
+  var labelALign = "top";
   var titleColour = "#000000";
   var titleSize = 14;
 
-  // checks if each of the nine optional properties are in 'options', and if so, updates the parameters from their default values
+  // checks if each of the eight optional properties are in 'options', and if so, updates the parameters from their default values
   if ("width" in options === true) {
-    chartArea.style.width = options.width + "px";
     chartWidth = options.width;
   }
 
   if ("height" in options === true) {
-    chartArea.style.height = options.height + "px";
     chartHeight = options.height;
   }
 
@@ -48,15 +46,11 @@ function drawBarChart(data, options, element) {
   }
 
   if ("labelColour" in options === true) {
-    textColour = options.labelColour;
+    labelColour = options.labelColour;
   }
 
   if ("labelAlign" in options === true) {
-    textAlign = options.labelAlign;
-  }
-
-  if ("title" in options === true) {
-    title = options.title;
+    labelALign = options.labelAlign;
   }
 
   if ("titleColour" in options === true) {
@@ -80,6 +74,29 @@ function drawBarChart(data, options, element) {
 
   // determines the width of each bar and inititalizes the variable for barHeight
   var barWidth = (chartWidth / numBars) - space;
+
+  // calls singleBarChart or stackedBarChart, depending on the data given
+  if (typeof(values[0]) == typeof(1)) {
+    singleBarChart(values, chartWidth, chartHeight, barWidth, maxY, space, colour, labelColour, labelALign, element);
+  }
+
+  // calls drawXlabels to draw the labels on the X-axis
+  drawXlabels(labels, chartWidth, barWidth, space, "div3");
+
+  // calls drawYlabels to draw the labels on the Y-axis
+  drawYlabels(scale, maxY, chartHeight, "div5");
+
+  // calls drawTitle to draw the chart title
+  drawTitle(title, titleSize, titleColour, chartWidth, "div7");
+}
+
+function singleBarChart(values, chartWidth, chartHeight, barWidth, maxY, space, colour, labelColour, labelALign, element) {
+  var chartArea = document.getElementById(element);
+
+  chartArea.style.width = chartWidth + "px";
+  chartArea.style.height = chartHeight + "px";
+
+  //initializes the variable barHeight
   var barHeight;
 
   // draws the bar for each value in 'values'
@@ -99,14 +116,14 @@ function drawBarChart(data, options, element) {
 
     // labels each bar with its value sets the colour of the label
     bar.innerHTML = values[i];
-    bar.style.color = textColour;
+    bar.style.color = labelColour;
 
     // determines the placement of the label (top, center, or bottom of bar)
     if (values[i] === 0) {
       bar.innerHTML = "";
-    } else if (textAlign === "center") {
+    } else if (labelALign === "center") {
       bar.style.lineHeight = barHeight + "px";
-    } else if (textAlign === "bottom") {
+    } else if (labelALign === "bottom") {
       bar.style.lineHeight = (2 * barHeight - 20) + "px";
     } else {
       bar.style.lineHeight = 20 + "px";
@@ -115,16 +132,9 @@ function drawBarChart(data, options, element) {
     // adds the bar to the chart area
     chartArea.appendChild(bar);
   }
-
-  // calls drawXlabels to draw the labels on the X-axis
-  drawXlabels(labels, chartWidth, barWidth, space, "div3");
-
-  // calls drawYlabels to draw the labels on the Y-axis
-  drawYlabels(scale, maxY, chartHeight, "div5");
-
-  // calls drawTitle to draw the chart title
-  drawTitle(title, titleSize, titleColour, chartWidth, "div7");
 }
+
+//function stackedBarChart(values, chartWidth, chartHeight, barWidth, maxY, space, colour, labelColour, labelALign, element)
 
 /**
 drawXlabels is a helper function called by drawBarChart to create the labels on the X-axis.
@@ -210,4 +220,4 @@ function drawTitle(text, size, colour, chartWidth, element) {
   title.style.width = chartWidth + "px";
 }
 
-drawBarChart({values: [9,6,6,5,6,3,0], labels: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], scale: 2}, {height:400, width:600, spacing:10, colour:"#008080", labelColour:"#00FFFF", labelAlign:"top", title: "Hours Spent Coding, Week of Sept 2 - 8, 2018", titleColour:"#000000", titleSize:16}, "div1");
+drawBarChart({values: [9,6,6,5,6,3,0], labels: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], scale: 2, title: "Hours Spent Coding, Week of Sept 2 - 8, 2018"}, {height:400, width:600, spacing:10, colour:"#008080", labelColour:"#00FFFF", labelAlign:"top", titleColour:"#000000", titleSize:16}, "div1");
