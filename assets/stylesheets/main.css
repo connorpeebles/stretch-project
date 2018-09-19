@@ -87,6 +87,30 @@
   word-wrap: break-word;
 }
 
+#div8{
+  top: 0;
+  position: absolute;
+  width: 200px;
+  height: 0px;
+  margin-top: 100px;
+  margin-left: 0px;
+  background: #FFFFFF;
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+.div9{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin-top: 0px;
+  margin-left: 0px;
+  background: #FFFFFF;
+  font-size: 12pt;
+  font-weight: normal;
+  line-height: 20px;
+}
+
 @keyframes test{
   0%{
     max-height: 0%;

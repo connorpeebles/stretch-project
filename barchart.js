@@ -73,6 +73,7 @@ function drawBarChart(data, options, element) {
   } else if (typeof(values[0]) == typeof([])) {
     var legend = data.legend;
     stackedBarChart(values, legend, chartWidth, chartHeight, barWidth, maxY, space, labelColour, labelALign, element);
+    drawLegend(chartWidth, chartHeight, legend, "div8");
   }
 
   // calls drawXlabels to draw the labels on the X-axis
@@ -139,7 +140,7 @@ function singleBarChart(values, chartWidth, chartHeight, barWidth, maxY, space, 
     bar.style.color = labelColour;
 
     // determines the placement of the label (top, center, or bottom of bar)
-    if (values[i] === 0) {
+    if (values[i] === 0 || barHeight < 16) {
       bar.innerHTML = "";
     } else if (labelALign === "center") {
       bar.style.lineHeight = barHeight + "px";
@@ -180,7 +181,7 @@ function stackedBarChart(values, legend, chartWidth, chartHeight, barWidth, maxY
       bar.innerHTML = values[i][j];
       bar.style.color = labelColour;
 
-      if (values[i][j] === 0) {
+      if (values[i][j] === 0 || barHeight < 16) {
         bar.innerHTML = "";
       } else if (labelALign === "center") {
         bar.style.lineHeight = barHeight + "px";
@@ -282,4 +283,29 @@ function drawTitle(text, size, colour, chartWidth, element) {
   title.style.width = chartWidth + "px";
 }
 
-drawBarChart({values: [[1,2,3,4],[2,4,6,8],[0,5,10,15],[4,3,2,1]], labels: ["Label1","Label2","Label3","Label4"], legend: [["Legend1","#008080"],["Legend2","#00FFFF"],["Legend3","#0000FF"],["Legend4","#000080"]], scale: 3, title: "Stacked Bar Chart"}, {height:500, width:500, spacing:20, labelColour:"#C0C0C0", labelAlign:"center", titleColour:"#000000", titleSize:16}, "div1");
+function drawLegend(chartWidth, chartHeight, legend, element) {
+  var legendArea = document.getElementById(element);
+  legendArea.style.height = chartHeight + "px";
+  legendArea.style.marginLeft = (chartWidth + 125) + "px";
+  legendArea.innerHTML = "Legend:";
+
+  for (var i = 0; i < legend.length; i++) {
+    var colourBox = document.createElement("div");
+    colourBox.setAttribute("class", "div9");
+    var textBox = document.createElement("div");
+    textBox.setAttribute("class", "div9");
+
+    colourBox.style.background = legend[i][1];
+    colourBox.style.marginTop = (40 * i + 10) + "px";
+
+    textBox.style.width = 170 + "px";
+    textBox.style.marginTop = (40 * i + 10) + "px";
+    textBox.style.marginLeft = 30 + "px";
+    textBox.innerHTML = legend[i][0];
+
+    legendArea.appendChild(colourBox);
+    legendArea.appendChild(textBox);
+  }
+}
+
+drawBarChart({values: [[1,2,3,4],[2,4,6,8],[0,5,10,20],[4,3,2,1]], labels: ["Label1","Label2","Label3","Label4"], legend: [["Legend1","#008080"],["Legend2","#00FFFF"],["Legend3","#0000FF"],["Legend4","#000080"]], scale: 4, title: "Stacked Bar Chart"}, {height:500, width:500, spacing:20, labelColour:"#C0C0C0", labelAlign:"center", titleColour:"#000000", titleSize:16}, "div1");
