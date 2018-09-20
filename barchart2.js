@@ -68,10 +68,10 @@ function drawBarChart(data, options, element) {
   // calls drawXlabels to draw the labels on the X-axis
   drawXlabels(labels, chartWidth, chartHeight, barWidth, space, element);
 
-  /**
   // calls drawYlabels to draw the labels on the Y-axis
-  drawYlabels(scale, maxY, chartHeight, "div5");
+  drawYlabels(scale, maxY, chartHeight, element);
 
+  /**
   // calls drawTitle to draw the chart title
   drawTitle(title, titleSize, titleColour, chartWidth, "div7");
   **/
@@ -146,28 +146,28 @@ function drawXlabels(labels, chartWidth, chartHeight, barWidth, space, element) 
 
     $(labelArea).append(label);
   }
+}
 
-  /**
-  var labelArea = document.getElementById(element);
+function drawYlabels(scale, maxY, chartHeight, element) {
 
-  // sets the width of the label area to match the width of the chart area
-  labelArea.style.width = chartWidth + "px";
+  var labelArea = $("<div>").attr("id","div5");
 
-  // draws the label for each label in 'labels'
-  for (var i = 0; i < labels.length; i++) {
-    var label = document.createElement("div");
-    label.setAttribute("class", "div4");
+  $(labelArea).css({height: chartHeight});
 
-    // sets the text and placement of each label
-    label.style.height = barWidth + "px";
-    label.style.marginLeft = (space + i * (barWidth + space)) + "px";
-    label.innerHTML = labels[i];
-    label.style.lineHeight = barWidth + "px";
+  $(element).append(labelArea);
 
-    // adds the label to the label area
-    labelArea.appendChild(label);
+  var labelHeight;
+
+  for (var i = 0; i <= maxY / scale; i++) {
+    var label = $("<div>").addClass("div6");
+
+    labelHeight = ((i * scale) / maxY) * chartHeight;
+
+    $(label).css({marginBottom: (labelHeight - 13) + "px"});
+    $(label).text((i * scale) + " -");
+
+    $(labelArea).append(label);
   }
-  **/
 }
 
 drawBarChart({values: [1,2,3,4], labels: ["L1","L2","L3","L4"], scale: 1, title: "Title"}, {width: 600, height: 400}, $("#div1")[0]);

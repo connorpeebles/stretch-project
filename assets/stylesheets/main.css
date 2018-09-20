@@ -49,12 +49,10 @@
 
 /* Y-axis label area */
 #div5{
-  top: 0;
   position: absolute;
   width: 100px;
   height: 300px;
-  margin-top: 100px;
-  margin-left: 0px;
+  margin-left: -101px;
   background: #FFFFFF;
 }
 
