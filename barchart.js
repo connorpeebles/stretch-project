@@ -308,4 +308,4 @@ function drawLegend(chartWidth, chartHeight, legend, element) {
   }
 }
 
-drawBarChart({values: [[1,2,3,4],[2,4,6,8],[0,5,10,20],[4,3,2,1]], labels: ["Label1","Label2","Label3","Label4"], legend: [["Legend1","#008080"],["Legend2","#00FFFF"],["Legend3","#0000FF"],["Legend4","#000080"]], scale: 4, title: "Stacked Bar Chart"}, {height:500, width:500, spacing:20, labelColour:"#C0C0C0", labelAlign:"center", titleColour:"#000000", titleSize:16}, "div1");
+drawBarChart({values: [[1000000,2000000,3000000,4000000],[2000000,4000000,6000000,8000000],[0,5000000,10000000,20000000],[4000000,3000000,2000000,1000000]], labels: ["Label1","Label2","Label3","Label4"], legend: [["Legend1","#008080"],["Legend2","#00FFFF"],["Legend3","#0000FF"],["Legend4","#000080"]], scale: 2000000, title: "Stacked Bar Chart"}, {height:500, width:500, spacing:40, labelColour:"#C0C0C0", labelAlign:"center", titleColour:"#000000", titleSize:16}, "div1");
