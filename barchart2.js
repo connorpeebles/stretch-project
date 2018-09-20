@@ -71,10 +71,8 @@ function drawBarChart(data, options, element) {
   // calls drawYlabels to draw the labels on the Y-axis
   drawYlabels(scale, maxY, chartHeight, element);
 
-  /**
   // calls drawTitle to draw the chart title
-  drawTitle(title, titleSize, titleColour, chartWidth, "div7");
-  **/
+  drawTitle(title, titleSize, titleColour, chartWidth, element);
 }
 
 function findMaxY(values, scale) {
@@ -170,4 +168,14 @@ function drawYlabels(scale, maxY, chartHeight, element) {
   }
 }
 
-drawBarChart({values: [1,2,3,4], labels: ["L1","L2","L3","L4"], scale: 1, title: "Title"}, {width: 600, height: 400}, $("#div1")[0]);
+function drawTitle(text, size, colour, chartWidth, element) {
+
+  var title = $("<div>").attr("id","div7");
+
+  $(title).css({width: chartWidth + "px", color: colour, fontSize: size + "pt"});
+  $(title).text(text);
+
+  $(element).append(title);
+}
+
+drawBarChart({values: [9.5,6,6,5,2.5,8,4], labels: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], scale: 2, title: "Hours Spent Coding, Week of Sept 16 - 22"}, {width: 600, height: 400, spacing: 20, colour: "#008080", labelColour: "#00FFFF", labelAlign: "center", titleColour: "#000080", titleSize: 18}, $("#div1")[0]);
