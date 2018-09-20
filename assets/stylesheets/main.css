@@ -1,5 +1,5 @@
 /* chart area */
-#div1{
+#chartArea{
   width: 500px;
   height: 300px;
   margin-top: 100px;
@@ -10,7 +10,7 @@
 }
 
 /* bars */
-.div2{
+.bar{
   position: absolute;
   width: 0px;
   height: 0px;
@@ -25,7 +25,7 @@
 }
 
 /* X-axis label area */
-#div3{
+#xArea{
   position: absolute;
   width: 500px;
   height: 200px;
@@ -34,7 +34,7 @@
 }
 
 /* X-axis labels */
-.div4{
+.xLabel{
   position: absolute;
   width: 200px;
   height: 0px;
@@ -48,7 +48,7 @@
 }
 
 /* Y-axis label area */
-#div5{
+#yArea{
   position: absolute;
   width: 100px;
   height: 300px;
@@ -57,7 +57,7 @@
 }
 
 /* Y-axis labels */
-.div6{
+.yLabel{
   bottom: 0;
   position: absolute;
   width: 100px;
@@ -70,7 +70,7 @@
 }
 
 /* title area */
-#div7{
+#titleArea{
   top: 0;
   position: absolute;
   width: 0px;
@@ -84,19 +84,17 @@
   word-wrap: break-word;
 }
 
-#div8{
-  top: 0;
+#legendArea{
   position: absolute;
   width: 200px;
-  height: 0px;
-  margin-top: 100px;
+  height: 0px
   margin-left: 0px;
   background: #FFFFFF;
   font-size: 14pt;
   font-weight: bold;
 }
 
-.div9{
+.legendLabel{
   position: absolute;
   width: 20px;
   height: 20px;
