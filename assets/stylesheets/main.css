@@ -26,10 +26,11 @@
 
 /* X-axis label area */
 #div3{
+  position: absolute;
   width: 500px;
   height: 200px;
   margin-top: 0px;
-  background: #808000;
+  background: #FFFFFF;
 }
 
 /* X-axis labels */

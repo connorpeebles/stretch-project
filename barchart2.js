@@ -66,7 +66,7 @@ function drawBarChart(data, options, element) {
   }
 
   // calls drawXlabels to draw the labels on the X-axis
-  drawXlabels(labels, chartWidth, barWidth, space, element);
+  drawXlabels(labels, chartWidth, chartHeight, barWidth, space, element);
 
   /**
   // calls drawYlabels to draw the labels on the Y-axis
@@ -130,13 +130,22 @@ function singleBarChart(values, chartWidth, chartHeight, barWidth, maxY, space, 
   }
 }
 
-function drawXlabels(labels, chartWidth, barWidth, space, element) {
+function drawXlabels(labels, chartWidth, chartHeight, barWidth, space, element) {
 
   var labelArea = $("<div>").attr("id","div3");
 
-  $(labelArea).css({width: chartWidth + "px"});
+  $(labelArea).css({width: chartWidth + "px", marginTop: (chartHeight + 1) + "px"});
 
   $(element).append(labelArea);
+
+  for (var i = 0; i < labels.length; i++) {
+    var label = $("<div>").addClass("div4");
+
+    $(label).css({height: barWidth + "px", marginLeft: (space + i * (barWidth + space)) + "px", lineHeight: barWidth + "px"});
+    $(label).text(labels[i]);
+
+    $(labelArea).append(label);
+  }
 
   /**
   var labelArea = document.getElementById(element);
