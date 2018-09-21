@@ -11,13 +11,47 @@
   <body>
     <div id="barChart"></div>
     <div id="barChart2"></div>
+    <div id="barChart3"></div>
     <script src="barchart.js"></script>
     <script>
-      drawBarChart({values: [9.5,6,6,5,2.5,8,4], labels: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], scale: 2, title: "Hours Spent Coding, Week of Sept 16 - 22"}, {width: 600, height: 400, spacing: 20, colour: "#008080", labelColour: "#00FFFF", labelAlign: "center", titleColour: "#000080", titleSize: 18}, $("#barChart")[0]);
+      drawBarChart(
+        {
+          values: [9.5,6,6,5,2.5,8,4],
+          labels: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+          scale: 2,
+          title: "Hours Spent Coding, Week of Sept 16 - 22"
+        },
+        {
+          width: 600,
+          height: 400,
+          spacing: 20,
+          colour: "#008080",
+          labelColour: "#00FFFF",
+          labelAlign: "bottom",
+          titleColour: "#000080",
+          titleSize: 18
+        },
+        $("#barChart")[0]);
     </script>
     <script>
-      drawBarChart({values: [[1000000,2000000,3000000,4000000],[2000000,4000000,6000000,8000000],[0,5000000,10000000,20000000],[4000000,3000000,2000000,1000000]], labels: ["Label1","Label2","Label3","Label4"], legend: [["Legend1","#008080"],["Legend2","#00FFFF"],["Legend3","#0000FF"],["Legend4","#000080"]], scale: 2000000, title: "Stacked Bar Chart"}, {height:500, width:500, spacing:40, labelColour:"#C0C0C0", labelAlign:"center", titleColour:"#000000", titleSize:16}, $("#barChart2")[0]);
-
+      drawBarChart(
+        {
+          values: [[1000000,2000000,3000000,4000000],[2000000,4000000,6000000,8000000],[0,5000000,10000000,20000000],[4000000,3000000,2000000,1000000]],
+          labels: ["Label1","Label2","Label3","Label4"],
+          legend: [["Legend1","#008080"],["Legend2","#00FFFF"],["Legend3","#0000FF"],["Legend4","#000080"]],
+          scale: 2000000,
+          title: "Stacked Bar Chart"
+        },
+        {
+          width:500,
+          height:500,
+          spacing:40,
+          labelColour:"#C0C0C0",
+          labelAlign:"center",
+          titleColour:"#000000",
+          titleSize:16
+        },
+        $("#barChart2")[0]);
     </script>
   </body>
 

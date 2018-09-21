@@ -39,7 +39,7 @@
   position: absolute;
   width: 500px;
   height: 200px;
-  margin-top: 0px;
+  margin-top: 400px;
   margin-left: 100px;
   background: #FFFFFF;
 }
@@ -47,7 +47,7 @@
 .xLabel{
   position: absolute;
   width: 200px;
-  height: 0px;
+  height: 20px;
   margin-top: 205px;
   margin-left: 0px;
   background: #FFFFFF;
@@ -70,16 +70,15 @@
   position: absolute;
   width: 100px;
   height: 20px;
-  margin-top: 0px;
   margin-left: 0px;
+  margin-bottom: 0px;
   background: #FFFFFF;
   text-align: right;
-  margin-bottom: 0px;
 }
 
 #titleArea{
   position: absolute;
-  width: 0px;
+  width: 500px;
   height: 75px;
   margin-top: 25px;
   margin-left: 100px;
