@@ -16,10 +16,22 @@
     <script>
       drawBarChart(
         {
-          values: [9.5,6,6,5,2.5,8,4],
+          values: [10,5,8,13,17,17,11,13,5,13,14,3],
+          labels: ["January","February","March","April","May","June","July","August","September","October","November","December"],
+          scale: 3,
+          title: "Number of Days with Precipitation in Toronto in 2017"
+        },
+        {
+        },
+        $("#barChart")[0]);
+    </script>
+    <script>
+      drawBarChart(
+        {
+          values: [7,6,5.5,1.5,9,0,6.5],
           labels: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-          scale: 2,
-          title: "Hours Spent Coding, Week of Sept 16 - 22"
+          scale: 1,
+          title: "Hours Spent on Stretch Project, Week of Sept 16 - 22"
         },
         {
           width: 600,
@@ -31,27 +43,25 @@
           titleColour: "#000080",
           titleSize: 18
         },
-        $("#barChart")[0]);
+        $("#barChart2")[0]);
     </script>
     <script>
       drawBarChart(
         {
-          values: [[1000000,2000000,3000000,4000000],[2000000,4000000,6000000,8000000],[0,5000000,10000000,20000000],[4000000,3000000,2000000,1000000]],
-          labels: ["Label1","Label2","Label3","Label4"],
-          legend: [["Legend1","#008080"],["Legend2","#00FFFF"],["Legend3","#0000FF"],["Legend4","#000080"]],
-          scale: 2000000,
-          title: "Stacked Bar Chart"
+          values: [[229,1394,549,227,13,114],[285,1687,606,276,16,149],[366,2120,657,326,20,193],[478,2626,694,376,23,243],[632,3202,721,430,27,298],[814,3714,726,491,31,350],[1044,4170,735,547,36,397]],
+          labels: ["1950","1960","1970","1980","1990","2000","2010"],
+          legend: [["Africa","#32CD32"],["Asia","#006400"],["Europe","#4169E1"],["North America","#000080"],["Oceania","#8A2BE2"],["South America","#4B0082"]],
+          scale: 250,
+          title: "Population of the World (in millions) by Continent and Decade, 1950-2010"
         },
         {
-          width:500,
-          height:500,
+          width:700,
+          height:800,
           spacing:40,
-          labelColour:"#C0C0C0",
           labelAlign:"center",
-          titleColour:"#000000",
           titleSize:16
         },
-        $("#barChart2")[0]);
+        $("#barChart3")[0]);
     </script>
   </body>
 

@@ -10,6 +10,12 @@
   background: #FFFFFF;
 }
 
+#barChart3{
+  width: 800px;
+  height: 600px;
+  background: #FFFFFF;
+}
+
 #chartArea{
   position: absolute;
   width: 500px;
