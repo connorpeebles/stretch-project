@@ -1,3 +1,11 @@
+function findOption(options, option, defaultValue) {
+  var output = defaultValue;
+  if (option in options === true) {
+    output = options[option];
+  }
+  return output;
+}
+
 function findMaxY(values, scale) {
   var maxValue = 0;
   var i;
@@ -24,16 +32,30 @@ function findMaxY(values, scale) {
   return maxY;
 }
 
-function singleBarChart(values, chartWidth, chartHeight, barWidth, maxY, space, colour, labelColour, labelALign, element) {
+function singleBarChart(data, options, element) {
+
+  var values = data.values;
+  var labels = data.labels;
+  var scale = data.scale;
+  var title = data.title;
+
+  var chartWidth = findOption(options, "width", 500);
+  var chartHeight = findOption(options, "height", 300);
+  var space = findOption(options, "spacing", 5);
+  var colour = findOption(options, "colour", "#008000");
+  var labelColour = findOption(options, "labelColour", "#FFFFFF");
+  var labelAlign = findOption(options, "labelAlign", "top");
+  var titleColour = findOption(options, "titleColour", "#000000");
+  var titleSize = findOption(options, "titleSize", 14);
 
   $(element).css({width: (chartWidth + 100) + "px", height: (chartHeight + 300) + "px"});
 
   var chartArea = $("<div>").attr("id", "chartArea");
-
+  $(chartArea).css({width: chartWidth + "px", height: chartHeight + "px"});
   $(element).append(chartArea);
 
-  $(chartArea).css({width: chartWidth + "px", height: chartHeight + "px"});
-
+  var maxY = findMaxY(values, scale);
+  var barWidth = (chartWidth / values.length) - space;
   var barHeight;
   var i;
 
@@ -47,9 +69,9 @@ function singleBarChart(values, chartWidth, chartHeight, barWidth, maxY, space, 
 
     if (barHeight < 16) {
       $(bar).text("");
-    } else if (labelALign === "center") {
+    } else if (labelAlign === "center") {
       $(bar).css({lineHeight: barHeight + "px"});
-    } else if (labelALign === "bottom") {
+    } else if (labelAlign === "bottom") {
       $(bar).css({lineHeight: (2 * barHeight - 20) + "px"});
     } else {
       $(bar).css({lineHeight: 20 + "px"});
@@ -179,64 +201,13 @@ function drawLegend(chartWidth, chartHeight, legend, element) {
 
 function drawBarChart(data, options, element) {
 
-  var values = data.values;
-  var labels = data.labels;
-  var scale = data.scale;
-  var title = data.title;
-  var numBars = values.length;
-
-  var chartWidth = 500;
-  var chartHeight = 300;
-  var space = 5;
-  var colour = "#008000";
-  var labelColour = "#FFFFFF";
-  var labelALign = "top";
-  var titleColour = "#000000";
-  var titleSize = 14;
-
-  if ("width" in options === true) {
-    chartWidth = options.width;
-  }
-
-  if ("height" in options === true) {
-    chartHeight = options.height;
-  }
-
-  if ("spacing" in options === true) {
-    space = options.spacing;
-  }
-
-  if ("colour" in options === true) {
-    colour = options.colour;
-  }
-
-  if ("labelColour" in options === true) {
-    labelColour = options.labelColour;
-  }
-
-  if ("labelAlign" in options === true) {
-    labelALign = options.labelAlign;
-  }
-
-  if ("titleColour" in options === true) {
-    titleColour = options.titleColour;
-  }
-
-  if ("titleSize" in options === true) {
-    titleSize = options.titleSize;
-  }
-
-  var maxY = findMaxY(values, scale);
-
-  var barWidth = (chartWidth / numBars) - space;
-
-  if (typeof(values[0]) === typeof(1)) {
-    singleBarChart(values, chartWidth, chartHeight, barWidth, maxY, space, colour, labelColour, labelALign, element);
-  } else if (typeof(values[0]) === typeof([])) {
+  //if (typeof(values[0]) === typeof(1)) {
+    singleBarChart(data, options, element);
+  /**} else if (typeof(values[0]) === typeof([])) {
     var legend = data.legend;
     stackedBarChart(values, legend, chartWidth, chartHeight, barWidth, maxY, space, labelColour, labelALign, element);
     drawLegend(chartWidth, chartHeight, legend, element);
-  }
+  }**/
 
   drawXlabels(labels, chartWidth, chartHeight, barWidth, space, element);
   drawYlabels(scale, maxY, chartHeight, element);
