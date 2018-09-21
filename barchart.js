@@ -1,11 +1,3 @@
-function findOption(options, option, defaultValue) {
-  var output = defaultValue;
-  if (option in options === true) {
-    output = options[option];
-  }
-  return output;
-}
-
 function findMaxY(values, scale) {
   var maxValue = 0;
   var i;
@@ -35,18 +27,14 @@ function findMaxY(values, scale) {
 function singleBarChart(data, options, element) {
 
   var values = data.values;
-  var labels = data.labels;
   var scale = data.scale;
-  var title = data.title;
 
-  var chartWidth = findOption(options, "width", 500);
-  var chartHeight = findOption(options, "height", 300);
-  var space = findOption(options, "spacing", 5);
-  var colour = findOption(options, "colour", "#008000");
-  var labelColour = findOption(options, "labelColour", "#FFFFFF");
-  var labelAlign = findOption(options, "labelAlign", "top");
-  var titleColour = findOption(options, "titleColour", "#000000");
-  var titleSize = findOption(options, "titleSize", 14);
+  var chartWidth = options.width;
+  var chartHeight = options.height;
+  var space = options.spacing;
+  var colour = options.colour;
+  var labelColour = options.labelColour;
+  var labelAlign = options.labelAlign;
 
   $(element).css({width: (chartWidth + 100) + "px", height: (chartHeight + 300) + "px"});
 
@@ -81,16 +69,26 @@ function singleBarChart(data, options, element) {
   }
 }
 
-function stackedBarChart(values, legend, chartWidth, chartHeight, barWidth, maxY, space, labelColour, labelALign, element) {
+function stackedBarChart(data, options, element) {
+
+  var values = data.values;
+  var scale = data.scale;
+  var legend = data.legend;
+
+  var chartWidth = options.width;
+  var chartHeight = options.height;
+  var space = options.spacing;
+  var labelColour = options.labelColour;
+  var labelAlign = options.labelAlign;
 
   $(element).css({width: (chartWidth + 300) + "px", height: (chartHeight + 300) + "px"});
 
   var chartArea = $("<div>").attr("id", "chartArea");
-
+  $(chartArea).css({width: chartWidth + "px", height: chartHeight + "px"});
   $(element).append(chartArea);
 
-  $(chartArea).css({width: (chartWidth) + "px", height: (chartHeight) + "px"});
-
+  var maxY = findMaxY(values, scale);
+  var barWidth = (chartWidth / values.length) - space;
   var barHeight;
   var i;
   var j;
@@ -108,9 +106,9 @@ function stackedBarChart(values, legend, chartWidth, chartHeight, barWidth, maxY
 
       if (barHeight < 16) {
         $(bar).text("");
-      } else if (labelALign === "center") {
+      } else if (labelAlign === "center") {
         $(bar).css({lineHeight: barHeight + "px"});
-      } else if (labelALign === "bottom") {
+      } else if (labelAlign === "bottom") {
         $(bar).css({lineHeight: (2 * barHeight - 20) + "px"});
       } else {
         $(bar).css({lineHeight: 20 + "px"});
@@ -123,7 +121,13 @@ function stackedBarChart(values, legend, chartWidth, chartHeight, barWidth, maxY
   }
 }
 
-function drawXlabels(labels, chartWidth, chartHeight, barWidth, space, element) {
+function drawXlabels(labels, options, element) {
+
+  var chartWidth = options.width;
+  var chartHeight = options.height;
+  var space = options.spacing;
+
+  var barWidth = (chartWidth / labels.length) - space;
 
   var labelArea = $("<div>").attr("id", "xArea");
 
@@ -143,7 +147,10 @@ function drawXlabels(labels, chartWidth, chartHeight, barWidth, space, element) 
   }
 }
 
-function drawYlabels(scale, maxY, chartHeight, element) {
+function drawYlabels(data, chartHeight, element) {
+
+  var scale = data.scale;
+  var maxY = findMaxY(data.values, scale);
 
   var labelArea = $("<div>").attr("id", "yArea");
 
@@ -166,7 +173,11 @@ function drawYlabels(scale, maxY, chartHeight, element) {
   }
 }
 
-function drawTitle(text, size, colour, chartWidth, element) {
+function drawTitle(text, options, element) {
+
+  var chartWidth = options.width;
+  var colour = options.titleColour;
+  var size = options.titleSize;
 
   var title = $("<div>").attr("id", "titleArea");
 
@@ -176,7 +187,10 @@ function drawTitle(text, size, colour, chartWidth, element) {
   $(element).append(title);
 }
 
-function drawLegend(chartWidth, chartHeight, legend, element) {
+function drawLegend(legend, options, element) {
+
+  var chartWidth = options.width;
+  var chartHeight = options.height;
 
   var legendArea = $("<div>").attr("id", "legendArea");
 
@@ -201,15 +215,41 @@ function drawLegend(chartWidth, chartHeight, legend, element) {
 
 function drawBarChart(data, options, element) {
 
-  //if (typeof(values[0]) === typeof(1)) {
-    singleBarChart(data, options, element);
-  /**} else if (typeof(values[0]) === typeof([])) {
-    var legend = data.legend;
-    stackedBarChart(values, legend, chartWidth, chartHeight, barWidth, maxY, space, labelColour, labelALign, element);
-    drawLegend(chartWidth, chartHeight, legend, element);
-  }**/
+  if (!("width" in options)) {
+    options.width = 500;
+  }
+  if (!("height" in options)) {
+    options.height = 300;
+  }
+  if (!("spacing" in options)) {
+    options.spacing = 5;
+  }
+  if (!("colour" in options)) {
+    options.colour = "#008000";
+  }
+  if (!("labelColour" in options)) {
+    options.labelColour = "#FFFFFF";
+  }
+  if (!("labelAlign" in options)) {
+    options.labelAlign = "top";
+  }
+  if (!("titleColour" in options)) {
+    options.titleColour = "#000000";
+  }
+  if (!("titleSize" in options)) {
+    options.titleSize = "14";
+  }
 
-  drawXlabels(labels, chartWidth, chartHeight, barWidth, space, element);
-  drawYlabels(scale, maxY, chartHeight, element);
-  drawTitle(title, titleSize, titleColour, chartWidth, element);
+  var values = data.values;
+
+  if (typeof(values[0]) === typeof(1)) {
+    singleBarChart(data, options, element);
+  }else if (typeof(values[0]) === typeof([])) {
+    stackedBarChart(data, options, element);
+    drawLegend(data.legend, options, element);
+  }
+
+  drawXlabels(data.labels, options, element);
+  drawYlabels(data, options.height, element);
+  drawTitle(data.title, options, element);
 }
