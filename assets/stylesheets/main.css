@@ -1,5 +1,17 @@
-/* chart area */
+#barChart{
+  width: 800px;
+  height: 600px;
+  background: #FFFFFF;
+}
+
+#barChart2{
+  width: 800px;
+  height: 600px;
+  background: #FFFFFF;
+}
+
 #chartArea{
+  position: absolute;
   width: 500px;
   height: 300px;
   margin-top: 100px;
@@ -9,7 +21,6 @@
   background: #FFFFFF;
 }
 
-/* bars */
 .bar{
   position: absolute;
   width: 0px;
@@ -20,25 +31,24 @@
   text-align: center;
   color: #FFFFFF;
   line-height: 0px;
-  animation-duration: 8s;
-  animation-name: test;
+  animation-duration: 5s;
+  animation-name: growBar;
 }
 
-/* X-axis label area */
 #xArea{
   position: absolute;
   width: 500px;
   height: 200px;
   margin-top: 0px;
+  margin-left: 100px;
   background: #FFFFFF;
 }
 
-/* X-axis labels */
 .xLabel{
   position: absolute;
   width: 200px;
   height: 0px;
-  margin-top: 210px;
+  margin-top: 205px;
   margin-left: 0px;
   background: #FFFFFF;
   text-align: right;
@@ -47,16 +57,14 @@
   transform-origin: left top 0;
 }
 
-/* Y-axis label area */
 #yArea{
   position: absolute;
   width: 100px;
   height: 300px;
-  margin-left: -101px;
+  margin-top: 100px;
   background: #FFFFFF;
 }
 
-/* Y-axis labels */
 .yLabel{
   bottom: 0;
   position: absolute;
@@ -69,13 +77,12 @@
   margin-bottom: 0px;
 }
 
-/* title area */
 #titleArea{
-  top: 0;
   position: absolute;
   width: 0px;
   height: 75px;
   margin-top: 25px;
+  margin-left: 100px;
   background: #FFFFFF;
   text-align: center;
   color: #000000;
@@ -87,7 +94,8 @@
 #legendArea{
   position: absolute;
   width: 200px;
-  height: 0px
+  height: 0px;
+  margin-top: 100px;
   margin-left: 0px;
   background: #FFFFFF;
   font-size: 14pt;
@@ -106,7 +114,7 @@
   line-height: 20px;
 }
 
-@keyframes test{
+@keyframes growBar{
   0%{
     max-height: 0%;
   }

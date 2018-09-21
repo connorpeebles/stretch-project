@@ -102,7 +102,13 @@ function findMaxY(values, scale) {
 
 function singleBarChart(values, chartWidth, chartHeight, barWidth, maxY, space, colour, labelColour, labelALign, element) {
 
-  $(element).css({width: chartWidth + "px", height: chartHeight + "px"});
+  $(element).css({width: (chartWidth + 100) + "px", height: (chartHeight + 300) + "px"});
+
+  var chartArea = $("<div>").attr("id","chartArea");
+
+  $(element).append(chartArea);
+
+  $(chartArea).css({width: chartWidth + "px", height: chartHeight + "px"});
 
   var barHeight;
 
@@ -111,7 +117,7 @@ function singleBarChart(values, chartWidth, chartHeight, barWidth, maxY, space, 
 
     barHeight = values[i] / maxY * chartHeight;
 
-    $(bar).css({width: barWidth + "px", height: barHeight + "px", marginLeft: (space + i * (barWidth + space)) + "px", top: (chartHeight - barHeight + 100) + "px", background: colour, color: labelColour});
+    $(bar).css({width: barWidth + "px", height: barHeight + "px", marginLeft: (space + i * (barWidth + space)) + "px", top: (chartHeight - barHeight) + "px", background: colour, color: labelColour});
     $(bar).text(values[i]);
 
     if (barHeight < 16) {
@@ -124,13 +130,19 @@ function singleBarChart(values, chartWidth, chartHeight, barWidth, maxY, space, 
       $(bar).css({lineHeight: 20 + "px"});
     }
 
-    $(element).append(bar);
+    $(chartArea).append(bar);
   }
 }
 
 function stackedBarChart(values, legend, chartWidth, chartHeight, barWidth, maxY, space, labelColour, labelALign, element) {
 
-  $(element).css({width: chartWidth + "px", height: chartHeight + "px"});
+  $(element).css({width: (chartWidth + 300) + "px", height: (chartHeight + 300) + "px"});
+
+  var chartArea = $("<div>").attr("id","chartArea");
+
+  $(element).append(chartArea);
+
+  $(chartArea).css({width: (chartWidth) + "px", height: (chartHeight) + "px"});
 
   var barHeight;
 
@@ -142,7 +154,7 @@ function stackedBarChart(values, legend, chartWidth, chartHeight, barWidth, maxY
 
       barHeight = values[i][j] / maxY * chartHeight;
 
-      $(bar).css({width: barWidth + "px", height: barHeight + "px", marginLeft: (space + i * (barWidth + space)) + "px", top: (chartHeight - barHeight - stackHeight + 100) + "px", background: legend[j][1], color: labelColour});
+      $(bar).css({width: barWidth + "px", height: barHeight + "px", marginLeft: (space + i * (barWidth + space)) + "px", top: (chartHeight - barHeight - stackHeight) + "px", background: legend[j][1], color: labelColour});
       $(bar).text(values[i][j]);
 
       if (barHeight < 16) {
@@ -157,7 +169,7 @@ function stackedBarChart(values, legend, chartWidth, chartHeight, barWidth, maxY
 
       stackHeight += barHeight;
 
-      $(element).append(bar);
+      $(chartArea).append(bar);
     }
   }
 }
@@ -166,7 +178,7 @@ function drawXlabels(labels, chartWidth, chartHeight, barWidth, space, element) 
 
   var labelArea = $("<div>").attr("id","xArea");
 
-  $(labelArea).css({width: chartWidth + "px", marginTop: (chartHeight + 1) + "px"});
+  $(labelArea).css({width: chartWidth + "px", marginTop: (chartHeight + 101) + "px"});
 
   $(element).append(labelArea);
 
@@ -216,7 +228,7 @@ function drawLegend(chartWidth, chartHeight, legend, element) {
 
   var legendArea = $("<div>").attr("id","legendArea");
 
-  $(legendArea).css({height: chartHeight + "px", marginLeft: (chartWidth + 25) + "px"});
+  $(legendArea).css({height: chartHeight + "px", marginLeft: (chartWidth + 125) + "px"});
   $(legendArea).text("Legend:")
 
   $(element).append(legendArea);
