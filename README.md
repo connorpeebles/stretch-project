@@ -19,12 +19,12 @@ The following features are supported by the library to alter the appearance of t
 
 The function call to create the chart is drawBarChart. The function takes in three parameters, as outlined below:
 
-*data*: data is in object with four mandatory properties (for a single bar chart) or five mandatory properties (for a stacked bar chart), as defined below:
+*data*: data is an object with four mandatory properties (for a single bar chart) or five mandatory properties (for a stacked bar chart), as defined below:
 * *values*: for a single bar chart, values is an array of numbers (greater than or equal to zero) representing the values of the bars; for a stacked bar chart, values is an array of arrays of numbers (greater than or equal to zero), where each array represents a bar and the numbers within the array represent the values of the stacks within the bar (the arrays must be of the same length)
 * *labels*: labels is an array of strings representing the labels to be displayed along the X-axis associated with each bar (must be the same length as values)
 * *scale*: scale is a positive number representing the scale at which the values on the Y-axis will increase by
 * *title*: title is a string representing the title to be dispalyed at the top of the chart
-* *legend* - **only required for a stacked bar chart**: legend is an array of arrays of length two representing the key and colour associated with each stack in the bars (must be the same length as each array in values); the first element of each array is a string representing the key associated with the stack to be dispalyed in the legend, and the second element of each array is a string representing the colour of the associated stack (in hex)
+* *legend* - **only required for a stacked bar chart**: legend is an array of arrays of length two representing the key and colour associated with each stack in the bars (must be the same length as each array in values); the first element of each array is a string representing the key associated with the stack to be dispalyed in the legend, and the second element of each array is a string representing the colour of the associated stack (entered as its hex code value)
 
 *options*: options is an object with up to eight optional properties, to modify the above listed features of the chart (if a property is not specified by the user, it will default the value shown):
 * *width*: natural number representing the width of the chart area in which the bars are displayed, measured in pixels (*default*: 500 px)
@@ -39,6 +39,10 @@ The function call to create the chart is drawBarChart. The function takes in thr
 *element*: the jQuery element that the chart is rendered into
 
 **EXAMPLES**
+
+Example of a single bar chart in which no optitons are specified:
+
+![code1](./screenshots/Example1Code.png)
 
 **BUGS**
 
