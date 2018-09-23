@@ -62,11 +62,14 @@ Example of a stacked bar chart in which some of the options are specified:
 
 **BUGS**
 
-* cannot display bars with negative values
 * if the user enters a chart width and/or height which is too small for the given number of values, the chart will not display properly
 * if the user enters a spacing option which is too large for the given chart width, the chart will not display properly
 * if the user enters a scale which is too small for the specified data, the Y-axis will not display properly
 * if the length of values and labels is not equal, the chart will not display properly
+
+**NEXT STEPS**
+
+* allow the charts to display bars with negative values
 
 **RESOURCES**
 
