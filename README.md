@@ -12,7 +12,7 @@ The following features can be entered by the user to alter the display of the ch
 * the width and height of the chart area 
 * the amount of whitespace between bars
 * the colour of the bars 
-* the colour and position (top, center, or bottom) of the labels displaying the value on the bar
+* the colour and position (top, center, or bottom) of the labels displaying the values on the bars
 * the colour and font size of the title displayed at the top of the chart 
 
 The following features are determined automatically by the program:
