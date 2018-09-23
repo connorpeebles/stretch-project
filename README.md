@@ -28,7 +28,7 @@ The function call to create the chart is drawBarChart. The function takes in thr
 
 *options*: options is an object with up to eight optional properties, to modify the above listed features of the chart (if a property is not specified by the user, it will default the value shown):
 * *width*: natural number representing the width of the chart area in which the bars are displayed, measured in pixels (*default*: 500 px)
-* *height*: natural number representing the height of the chart area in which the bars are displayed, measured in pixeles (*default*: 300 px)
+* *height*: natural number representing the height of the chart area in which the bars are displayed, measured in pixels (*default*: 300 px)
 * *spacing*: whole number representing the amount of whitespace between bars, measured in pixels (*default*: 5 px)
 * *colour*: string representing the colour of the bars, entered as its hex code value (*default*: green, hex code #008000) (*note*: not required for a stacked bar chart, as the colours of the stacks is speicified in the legend)
 * *labelColour*: string representing the colour of the labels displaying the value on the bar, entered as its hex code value (*default*: white, hex code #FFFFFF)
@@ -43,6 +43,17 @@ The function call to create the chart is drawBarChart. The function takes in thr
 Example of a single bar chart in which no optitons are specified:
 
 ![code1](./screenshots/Example1Code.png)
+![chart1](./screenshots/Example1Chart.png)
+
+Example of a single bar chart in which all of the options are specified:
+
+![code2](./screenshots/Example2Code.png)
+![chart2](./screenshots/Example2Chart.png)
+
+Example of a stacked bar chart in which some of the options are specified:
+
+![code3](./screenshots/Example3Code.png)
+![chart3](./screenshots/Example3Chart.png)
 
 **BUGS**
 
