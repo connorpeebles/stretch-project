@@ -17,7 +17,7 @@ The following features can be entered by the user to alter the display of the ch
 
 The following features are determined automatically by the program:
 
-* the width of the bars is determined based on the given number of bars, the specified width of the chart, and the specified amount of whitespace betweene bars
+* the width of the bars is determined based on the given number of bars, the specified width of the chart, and the specified amount of whitespace between bars
 * the heights of the bars is determined based on the given values for the bars, the specified height of the chart, and the specified scale for the Y-axis
 
 **FUNCTION**
@@ -28,14 +28,14 @@ The function call to create the chart is drawBarChart. The function takes in thr
 * *values*: for a single bar chart, values is an array of numbers (greater than or equal to zero) representing the values of the bars; for a stacked bar chart, values is an array of arrays of numbers (greater than or equal to zero), where each array represents a bar and the numbers within the array represent the values of the stacks within the bar (the arrays must be of the same length)
 * *labels*: labels is an array of strings representing the labels to be displayed along the X-axis associated with each bar (must be the same length as values)
 * *scale*: scale is a positive number representing the scale at which the values on the Y-axis will increase by
-* *title*: title is a string representing the title to be dispalyed at the top of the chart
-* *legend* - **only required for a stacked bar chart**: legend is an array of arrays of length two representing the key and colour associated with each stack in the bars (must be the same length as each array in values); the first element of each array is a string representing the key associated with the stack to be dispalyed in the legend, and the second element of each array is a string representing the colour of the associated stack (entered as its hex code value)
+* *title*: title is a string representing the title to be displayed at the top of the chart
+* *legend* - **only required for a stacked bar chart**: legend is an array of arrays of length two representing the key and colour associated with each stack in the bars (must be the same length as each array in values); the first element of each array is a string representing the key associated with the stack to be displayed in the legend, and the second element of each array is a string representing the colour of the associated stack (entered as its hex code value)
 
 *options*: options is an object with up to eight optional properties, to modify the above listed features of the chart (if a property is not specified by the user, it will default the value shown):
 * *width*: natural number representing the width of the chart area in which the bars are displayed, measured in pixels (*default*: 500 px)
 * *height*: natural number representing the height of the chart area in which the bars are displayed, measured in pixels (*default*: 300 px)
 * *spacing*: whole number representing the amount of whitespace between bars, measured in pixels (*default*: 5 px)
-* *colour*: string representing the colour of the bars, entered as its hex code value (*default*: green, hex code #008000) (*note*: not required for a stacked bar chart, as the colours of the stacks is speicified in the legend)
+* *colour*: string representing the colour of the bars, entered as its hex code value (*default*: green, hex code #008000) (*note*: not required for a stacked bar chart, as the colours of the stacks is specified in the legend)
 * *labelColour*: string representing the colour of the labels displaying the value on the bar, entered as its hex code value (*default*: white, hex code #FFFFFF)
 * *labelAlign*: string representing the position of the labels displaying the value on the bar as "top", "center", or "bottom" (*default*: top)
 * *titleColour*: string representing the colour of the title displayed at the top of the chart (*default*: black, hex code #000000)
@@ -45,7 +45,7 @@ The function call to create the chart is drawBarChart. The function takes in thr
 
 **EXAMPLES**
 
-Example of a single bar chart in which no optitons are specified:
+Example of a single bar chart in which no options are specified:
 
 ![code1](./screenshots/Example1Code.png)
 ![chart1](./screenshots/Example1Chart.png)
