@@ -22,7 +22,7 @@ The following features are determined automatically by the program:
 
 **FUNCTION**
 
-The function call to create the chart is drawBarChart. The function takes in three parameters, as outlined below:
+The function call to create the chart is *drawBarChart*. The function takes in three parameters, as outlined below:
 
 *data*: data is an object with four mandatory properties (for a single bar chart) or five mandatory properties (for a stacked bar chart), as defined below:
 * *values*: for a single bar chart, values is an array of numbers (greater than or equal to zero) representing the values of the bars; for a stacked bar chart, values is an array of arrays of numbers (greater than or equal to zero), where each array represents a bar and the numbers within the array represent the values of the stacks within the bar (the arrays must be of the same length)
