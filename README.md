@@ -41,7 +41,7 @@ The function call to create the chart is *drawBarChart*. The function takes in t
 * *titleColour*: string representing the colour of the title displayed at the top of the chart (*default*: black, hex code #000000)
 * *titleSize*: natural number representing the point size of title displayed at the top of the chart (*default*: 14 pt)
 
-*element*: the jQuery element that the chart is rendered into: $("barChart")[0]
+*element*: the jQuery element that the chart is rendered into: $("#barChart")[0]
 
 **EXAMPLES**
 
