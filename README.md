@@ -7,13 +7,18 @@ This library allows the user to create bar charts and stacked bar charts. The us
 
 **FEATURES**
 
-The following features are supported by the library to alter the appearance of the chart:
+The following features can be entered by the user to alter the display of the chart:
 
-* the width and height of the chart area
+* the width and height of the chart area 
 * the amount of whitespace between bars
 * the colour of the bars 
 * the colour and position (top, center, or bottom) of the labels displaying the value on the bar
 * the colour and font size of the title displayed at the top of the chart 
+
+The following features are determined automatically by the program:
+
+* the width of the bars is determined based on the given number of bars, the specified width of the chart, and the specified amount of whitespace betweene bars
+* the heights of the bars is determined based on the given values for the bars, the specified height of the chart, and the specified scale for the Y-axis
 
 **FUNCTION**
 
@@ -36,7 +41,7 @@ The function call to create the chart is drawBarChart. The function takes in thr
 * *titleColour*: string representing the colour of the title displayed at the top of the chart (*default*: black, hex code #000000)
 * *titleSize*: natural number representing the point size of title displayed at the top of the chart (*default*: 14 pt)
 
-*element*: the jQuery element that the chart is rendered into
+*element*: the jQuery element that the chart is rendered into: $("barChart")[0]
 
 **EXAMPLES**
 
@@ -57,4 +62,14 @@ Example of a stacked bar chart in which some of the options are specified:
 
 **BUGS**
 
+* cannot display bars with negative values
+* if the user enters a chart width and/or height which is too small for the given number of values, the chart will not display properly
+* if the user enters a spacing option which is too large for the given chart width, the chart will not display properly
+* if the user enters a scale which is too small for the specified data, the Y-axis will not display properly
+* if the length of values and labels is not equal, the chart will not display properly
+
 **RESOURCES**
+
+This [Youtube tutorial](https://www.youtube.com/watch?v=esa5hJegRfI) was used to help understand how to get my html, css, and javascript files all talking to each other.
+
+[w3schools.com](https://www.w3schools.com/) was often used to learn about various functions and syntax.
