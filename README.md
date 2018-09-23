@@ -31,7 +31,7 @@ The function call to create the chart is *drawBarChart*. The function takes in t
 * *title*: title is a string representing the title to be displayed at the top of the chart
 * *legend* - **only required for a stacked bar chart**: legend is an array of arrays of length two representing the key and colour associated with each stack in the bars (must be the same length as each array in values); the first element of each array is a string representing the key associated with the stack to be displayed in the legend, and the second element of each array is a string representing the colour of the associated stack (entered as its hex code value)
 
-*options*: options is an object with up to eight optional properties, to modify the above listed features of the chart (if a property is not specified by the user, it will default the value shown):
+*options*: options is an object with up to eight optional properties, to modify the above listed features of the chart (if a property is not specified by the user, it will default to the value shown):
 * *width*: natural number representing the width of the chart area in which the bars are displayed, measured in pixels (*default*: 500 px)
 * *height*: natural number representing the height of the chart area in which the bars are displayed, measured in pixels (*default*: 300 px)
 * *spacing*: whole number representing the amount of whitespace between bars, measured in pixels (*default*: 5 px)
