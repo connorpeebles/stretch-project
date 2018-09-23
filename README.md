@@ -35,7 +35,7 @@ The function call to create the chart is *drawBarChart*. The function takes in t
 * *width*: natural number representing the width of the chart area in which the bars are displayed, measured in pixels (*default*: 500 px)
 * *height*: natural number representing the height of the chart area in which the bars are displayed, measured in pixels (*default*: 300 px)
 * *spacing*: whole number representing the amount of whitespace between bars, measured in pixels (*default*: 5 px)
-* *colour*: string representing the colour of the bars, entered as its hex code value (*default*: green, hex code #008000) (*note*: not required for a stacked bar chart, as the colours of the stacks is specified in the legend)
+* *colour*: string representing the colour of the bars, entered as its hex code value (*default*: green, hex code #008000) (*note*: not required for a stacked bar chart, as the colours of the stacks are specified in the legend)
 * *labelColour*: string representing the colour of the labels displaying the value on the bar, entered as its hex code value (*default*: white, hex code #FFFFFF)
 * *labelAlign*: string representing the position of the labels displaying the value on the bar as "top", "center", or "bottom" (*default*: top)
 * *titleColour*: string representing the colour of the title displayed at the top of the chart (*default*: black, hex code #000000)
